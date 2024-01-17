@@ -69,9 +69,9 @@ def chat_completion(
         )
     else:
         spark_client = SparkChat(
-            X_APP_ID or config_dict.get(api_spec.model, "app_id"),
-            X_API_KEY or config_dict.get(api_spec.model, "api_key"),
-            X_API_SECRET or config_dict.get(api_spec.model, "api_secret"),
+            os.getenv("APP_ID") or config_dict.get(api_spec.model, "app_id"),
+            os.getenv("API_KEY") or config_dict.get(api_spec.model, "api_key"),
+            os.getenv("API_SECRET") or config_dict.get(api_spec.model, "api_secret"),
             f"ws://spark-api.xf-yun.com/{api_spec.api_version}/chat",
             api_spec.domain
         )
